@@ -2,13 +2,17 @@ import React from 'react'
 
 export default function InputNLabel(props) {
   return (
-    <div className={props.contsinerCls}>
+    <div className={props.containerCls}>
       <label htmlFor={props.inpId}>{props.label}</label>
-        <input type={props.inpType} value={props.inpValue}placeholder={props.inpPlacholder} id={props.inpId} onBlur={props.getFun} className={props.inpCls}/>
-    </div> 
+      <input
+        type={props.inpType}
+        value={props.inpValue}
+        placeholder={props.inpPlaceholder}
+        id={props.inpId}
+        onChange={props.onChange}
+        className={props.inpCls}
+      />
+      {props.error && <span className='errorTxt'>{props.errormsg}</span>}
+    </div>
   )
 }
-
-/*
-inpId,label,inpType,inpValue,inpPlacholder,getFun,contsinerCls,inpCls
-*/ 

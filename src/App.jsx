@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Signup from './Components/Auth/Signup.jsx'
+import Login from './Components/Auth/Login.jsx'
 import './App.css'
 
 function App() {
@@ -14,7 +16,8 @@ function App() {
 <div className='content'>
   <BrowserRouter>
   <Routes>
-    {/* <Route path='/' element=/> */}
+    <Route path='/' element={<Signup/>}/>
+    <Route path='/login' element={<Login/>}/>
   </Routes>
   </BrowserRouter>
 </div>
