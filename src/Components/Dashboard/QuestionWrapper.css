@@ -7,8 +7,11 @@
 .qustionForm{
   width: 400px;
    
-    border: 1px solid gray;
-    min-height: 200px
+    border: 1px solid rgb(230, 88, 88);
+    min-height: 200px;padding: 10px;
+    box-shadow: 3px 3px 9px rgb(230, 88, 88);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .rule{
     text-align: center;
@@ -17,9 +20,51 @@
     letter-spacing: 1px;
     font-family: Arial, Helvetica, sans-serif;
 }
+.form-question{
+    /* background-color: red; */
+    display: flex;
+    margin-top: 10px;
+    column-gap: 3px;
+}
+.optioninpcls{
+    border: none;
+    background-color: rgba(243, 130, 130, 0.493);
+    padding: 3px 10px;
+    border-radius: 10px;
+    outline: none;
+}
+.questionAddBtn{
+    align-self: center;
+    justify-items: center;
+    
+}
+.questionAddBtn{
+    padding: 5px 10px;
+    border:2px solid rgba(240, 180, 17, 0.918);
+    outline: 2px solid rgb(245, 90, 90);
+    border-radius: 20px;
+}
 @media (max-width:430px) {
     .qustionForm{
         width: 90%;
         margin: 0 auto
+    }
+    .form-question{
+        flex-direction: column;
+        row-gap: 20px;
+        /* width: 90%; */
+    }
+    .questionInputContainer{
+ display: flex;
+ justify-content: center;   
+ gap: 10px;
+}
+/* .form-question input{
+    width: 100%;
+} */
+}
+@media (max-width:305px){
+    .form-question{
+        flex-direction: column;
     }
 }
