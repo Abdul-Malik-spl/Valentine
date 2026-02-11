@@ -14,7 +14,7 @@
   border-radius: 12px;
   padding: 2rem;
   width: 100%;
-  max-width: 400px; /* desktop limit */
+  max-width: 400px; 
   box-shadow: 0 8px 32px rgba(0,0,0,0.25);
 }
 
@@ -78,7 +78,7 @@
   }
 }
 
-/* 🔎 Ultra-small screens (like 140px wide) */
+
 @media (max-width: 200px) {
   .glassForm {
     padding: 1rem;

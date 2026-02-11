@@ -16,3 +16,16 @@ export default function InputNLabel(props) {
     </div>
   )
 }
+
+/*
+containerCls
+inpId
+label
+inpType
+inpValue
+inpPlaceholder
+onChange
+inpCls
+error
+errormsg
+*/ 

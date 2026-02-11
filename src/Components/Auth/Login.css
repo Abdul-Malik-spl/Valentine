@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url('your-background.jpg') no-repeat center center/cover;
+  /* background: url('your-background.jpg') no-repeat center center/cover; */
 }
 
 .glassForm {

@@ -18,7 +18,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // simple validation
+    
     let newErrors = {};
     Object.keys(formValues).forEach((key) => {
       if (!formValues[key].trim()) {
@@ -30,7 +30,7 @@ export default function Login() {
 
     if (Object.keys(newErrors).length === 0) {
       try {
-        // ✅ send to backend API
+       
         const res = await axios.post("http://localhost:5000/api/login", formValues);
         console.log("Login success:", res.data);
         alert("Login successful!");
