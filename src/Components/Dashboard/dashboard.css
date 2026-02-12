@@ -24,7 +24,7 @@ nav{
 }
 .active-plus{
     transform: rotateZ(45deg);
-    color: red;
+    color: rgb(167, 36, 36);
    
 }
 .btn-question{

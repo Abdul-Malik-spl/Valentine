@@ -15,7 +15,7 @@ export default function InputNLabel(props) {
       {props.error && <span className='errorTxt'>{props.errormsg}</span>}
     </div>
   )
-}
+}  
 
 /*
 containerCls

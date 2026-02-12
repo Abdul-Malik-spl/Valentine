@@ -33,7 +33,7 @@ let questionCreate = useCallback(() => {
 
     return(
         <nav><span title="Create Question For Partner"><FaPlus  fontWeight="900" className='btn-question ' onClick={questionCreate} ref={plusRef}/></span>
-        <span><FaBell color='red'/></span>
+        <span><FaBell color='rgb(167, 36, 36)'/></span>
 <div className='navnamesec'><p>Welcome {Capitalize(p1)} <FaHeart color="red" size="13px"/> {Capitalize(p2)}</p></div>
         </nav>
     )
