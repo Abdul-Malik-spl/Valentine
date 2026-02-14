@@ -1,13 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState,useCallback } from 'react'
 import './QuestionWrapper.css'
 import InputNLabel from '../Auth/InputNLabel'
 export const QuestionCreate = () => {
 let [currentType,setCurrentType]=useState({questionInput:"",optionsInput:"",ans:""})
 let [questionList,setQuestionList]=useState([])
+let [error,setError]=useState(false)
+let [errmsg,setErrmsg]=useState("")
 // let [currentOptions,setCurrentOption]=useState([])
+
+
+
 let valueGetFromInput=(id,value)=>{
+if (id === "optionsInput") { 
+    if(value.split("-").length - 1==4){
+        return errorShow("only four options only enter")
+    }
+ }
+  
 setCurrentType({...currentType,[id]:value})
 }
+
 let addquestion=()=>{
     let {questionInput,optionsInput,ans}=currentType
     console.log(questionInput,optionsInput);
@@ -15,17 +27,23 @@ let addquestion=()=>{
     if(questionInput&&optionsInput&&ans){
         console.log(optionsInput.includes('-'));
         
-        if(optionsInput.includes('-')&&optionsInput.split('-').every(a=>a.length>=1)&&optionsInput.split('-').length>=4){
+        if(optionsInput.includes('-')&&optionsInput.split('-').every(a=>a.length>=1)&&optionsInput.split('-').length<=4){
             let options=optionsInput.split('-')
-            setCurrentOption(options)
-            let data={question:questionInput,options}
-            console.log(data);
-            
+            // setCurrentOption(options)
+            let data={question:questionInput,options,ans}
+            if(questionList.length<=10){
+ setQuestionList([...questionList,data])
+ setCurrentType({questionInput:"",optionsInput:"",ans:""})
+            } else{
+              
+                  errorShow("Only Allowed 10 Questions")
+            }
         }else{
-            alert("enter atlease 2 optiones ")
+          
+              errorShow("Atleast give two options")
         }
     }else{
-        alert("please type question and answer")
+        errorShow("Please Enter All Filelds")
     }
     
 }
@@ -34,9 +52,17 @@ let answer={letter,index,value:event.target.value}
 setCurrentType({...currentType,ans:answer})
 
 }
-let submitData=()=>{
 
+let errorShow=useCallback((msg)=>{
+setError(true)
+setErrmsg(msg)
+},[])
+
+let submitData=()=>{
+    console.log(questionList);
+    
 }
+
 
   return (
     <div className='questionWrapper'>
@@ -62,6 +88,10 @@ return <span key={b}><label>{letter})</label><input type='radio' name='ansOption
         <button className='questionAddBtn' onClick={submitData}>Submit</button>
         </div>
         </div>
+      {questionList.length>0&&<section id='questionsShow'>
+<h5 className='title'>Questions</h5>
+        </section>}
+        {error&&<ErrorComponent msg={errmsg} setError={setError} setErrmsg={setErrmsg}/>}
     </div>
   )
 }
@@ -70,7 +100,7 @@ let array=[{containerCls:"questionInputContainer",
  inpId:"questionInput",
 label:"Question",
  inpType:"text",
-inpPlaceholder:"enter question     ",
+inpPlaceholder:"enter question",
 inpCls:"optioninpcls",
 error:"",
 errormsg:""},
@@ -83,6 +113,16 @@ inpCls:"optioninpcls",
 error:"",
 errormsg:""},
 ]
+
+function ErrorComponent({msg,setError,setErrmsg}){
+
+    return <div className='errorPage'>
+<div className='errorBox'>
+<h4 style={{textAlign:"center"}}>{msg}</h4>
+<button onClick={()=>{setError(false);setErrmsg("")}}>close</button>
+</div>
+    </div>
+}
 
 // containerCls
 // inpId
